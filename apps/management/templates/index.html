@@ -1,0 +1,69 @@
+<html>
+
+<head>
+
+
+    {% load static %}
+    {% include 'base.html' %}
+
+    <meta charset="utf-8">
+    <title>MEDINOVA - Hospital Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <style>
+    body{
+    background-image:url("{% static 'img/main.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    }
+       .jumbotron {
+
+        margin-top:40px;
+      padding-top: 10%;
+
+      padding-bottom: 20%;
+      height:100px;
+    }
+    #jbt{
+    text-align: center;
+
+
+
+}
+div.jbt1{
+padding: 20px 100px 20px 100px;
+
+}
+
+    </style>
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+<br>
+      <br>
+      <div class='jbt1' >
+      <div class="jumbotron" id="jbt">
+        <h1 class="display-4">Welcome {{user.username}} </h1>
+        <hr class="my-4">
+        <p  class="lead"><b>A simple project based on Hospital Management System that uses Python with Django Web Framework.</b></p>
+        <hr class="my-4">
+         {% if user.is_superuser == 1 %}
+        <p ><h2>For admin panel</h2></p>
+        <hr class="my-4">
+        <p class="lead">
+
+        </p>
+          {% endif %}
+      </div>
+    </div>
+
+
+{% include 'footer.html' %}
+
+</body>
+</html>

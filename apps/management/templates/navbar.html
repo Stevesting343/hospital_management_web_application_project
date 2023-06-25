@@ -1,0 +1,234 @@
+<html>
+
+<head>
+
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Shree Care - Hospital Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+
+</head>
+
+<body>
+
+
+{% if user.is_superuser == 1 %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shree Care</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">HOME <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'display_appointment' user.id %}" class="nav-link">APPOINTMENT REQUEST </a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    MENU
+                </a>
+
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="{% url 'display_patient' %}" class="dropdown-item">DISPLAY PATIENT</a>
+                    <a href="{% url 'display_doctor' %}" class="dropdown-item">DISPLAY DOCTOR</a>
+                    <a href="{% url 'app_dis_to_pa' user.id %}" class="nav-link"> BOOKED APPOINTMENT </a>
+
+                    <a href="{% url 'patient_history' %}" class="nav-link">PATIENT HISTORY </a>
+
+
+                    <div class="dropdown-divider"></div>
+
+                    <a role="button" class="nav-link" data-toggle="modal" href="#exampleModal"
+                    >
+                        About
+                    </a>
+
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">ABOUT </a>
+            </li>
+
+
+        </ul>
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary my-2 my-sm-0 mr-4">Logout</a>
+
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        About Hospital Management System</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+{% else %}
+
+{% if user.type_user == "Patient" %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shree Care</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">HOME <span class="sr-only">(current)</span></a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    MENU
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="{% url 'display_doctor' %}" class="dropdown-item">DISPLAY DOCTOR</a>
+
+                    <a href="{% url 'display_appointment' user.id %}" class="nav-link">APPOINTMENT REQUEST </a>
+
+                    <a href="{% url 'app_dis_to_pa' user.id %}" class="nav-link"> BOOKED APPOINTMENT </a>
+
+
+                    <div class="dropdown-divider"></div>
+
+                    <a role="button" class="nav-link" data-toggle="modal" href="#exampleModal"
+                    >
+                        About
+                    </a>
+
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">ABOUT </a>
+            </li>
+
+
+        </ul>
+
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary my-2 my-sm-0 mr-4">Logout</a>
+
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        About Hospital Management System</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+{% else %}
+
+<!--doctor-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shree Care</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">HOME <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a href="{% url 'display_appointment' user.id %}" class="nav-link">APPOINTMENT REQUEST </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    MENU
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="{% url 'display_patient' %}" class="dropdown-item">DISPLAY PATIENT</a>
+                    <a href="{% url 'display_doctor' %}" class="dropdown-item">DISPLAY DOCTOR</a>
+
+                    <a href="{% url 'app_dis_to_pa' user.id %}" class="nav-link"> BOOKED APPOINTMENT </a>
+
+                    <a href="{% url 'patient_history' %}" class="nav-link">PATIENT HISTORY </a>
+
+
+                    <div class="dropdown-divider"></div>
+
+                    <a role="button" class="nav-link" data-toggle="modal" href="#exampleModal"
+                    >
+                        About
+                    </a>
+
+
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link">ABOUT </a>
+            </li>
+
+
+        </ul>
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary my-2 my-sm-0 mr-4">Logout</a>
+
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        About Hospital Management System</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% endif %}
+
+
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!--<html>-->
+
+<!--<head>-->
+
+
+<!--    {% load static %}-->
+<!--    {% include 'base.html' %}-->
+
+<!--    <meta charset="utf-8">-->
+<!--    <title>MEDINOVA - Hospital Website Template</title>-->
+<!--    <meta content="width=device-width, initial-scale=1.0" name="viewport">-->
+<!--    <meta content="Free HTML Templates" name="keywords">-->
+<!--    <meta content="Free HTML Templates" name="description">-->
+<!--    <style>-->
+<!--    body{-->
+<!--    background-image:url("{% static 'img/main.jpg' %}");-->
+<!--    background-repeat:no-repeat;-->
+<!--    background-size:cover;-->
+
+<!--    }-->
+
+
+
+<!--/* Chrome 10-25, Safari 5.1-6 */-->
+<!--background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));-->
+
+<!--/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */-->
+<!--background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))-->
+<!--}-->
+
+<!--.card-registration .select-input.form-control[readonly]:not([disabled]) {-->
+<!--font-size: 1rem;-->
+<!--line-height: 2.15;-->
+<!--padding-left: .75em;-->
+<!--padding-right: .75em;-->
+<!--}-->
+<!--.card-registration .select-arrow {-->
+<!--top: 13px;-->
+<!--}-->
+
+
+<!--  .jumbotron {-->
+
+<!--        margin-top:40px;-->
+
+
+<!--      padding-bottom: 20%;-->
+<!--      height:100px;-->
+<!--    }-->
+<!--    #jbt{-->
+<!--    text-align: center;-->
+
+
+
+<!--}-->
+<!--div.jbt1{-->
+<!--padding: 20px 100px 20px 100px;-->
+
+<!--}-->
+
+
+
+
+
+<!--    </style>-->
+
+<!--</head>-->
+
+<!--<body>-->
+<!--{% include 'navbar.html' %}-->
+
+
+<!--<div class='jbt1'>-->
+<!--    <div class="jumbotron" id="jbt">-->
+
+<!--        <h1 id="a">Enter Patient Details</h1>-->
+<!--        <form action="{% url 'store_patient'%}" method="post">-->
+
+<!--            {% csrf_token %}-->
+
+<!--            &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
+<!--            <hr class="my-4">-->
+<!--            <div class="row mb-4">-->
+<!--                <div class="col">-->
+<!--                    <div class="form-outline">-->
+<!--                        <input type="text" class="form-control" placeholder="Enter Name"-->
+<!--                               name="p_name" required>-->
+<!--                        <label class="form-label"></label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <div class="form-outline">-->
+<!--                        <input type="email" class="form-control" placeholder="Enter email"-->
+<!--                               name="p_email" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--            <hr class="my-4">-->
+<!--            <div class="row mb-4">-->
+<!--                <div class="col">-->
+<!--                    <div class="form-outline">-->
+<!--                        <input type="number" class="form-control" name="p_age"-->
+<!--                               placeholder="Enter age" min="5" max="60" required/>-->
+<!--                        <label class="form-label"></label><br><br>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <div class="form-outline">-->
+
+<!--                        <input type="text" class="form-control" name="p_mobile" placeholder="mobile number" pattern="[789][0-9]{9}"-->
+<!--                               required/>-->
+<!--                        <label class="form-label"></label>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <input type="text" name="p_gender" placeholder="Gender">-->
+
+
+<!--            </div>-->
+<!--            <br>-->
+<!--            <br>-->
+
+<!--            <div class="mt-4 pt-2 text-center">-->
+<!--                <button class="btn btn-primary btn-lg" type="submit">Submit</button>-->
+
+<!--            </div>-->
+<!--            &lt;!&ndash;                <span class="lead">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <a href="#" class="btn btn-danger " style="color: rgb(253, 253, 253); text-decoration: none; ">Go Back</a>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </span>&ndash;&gt;-->
+
+<!--            &lt;!&ndash; Submit button &ndash;&gt;-->
+
+
+<!--        </form>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+<!--</body>-->
+<!--</html>-->

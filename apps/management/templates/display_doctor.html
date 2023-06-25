@@ -1,0 +1,135 @@
+<html>
+
+<head>
+
+
+    {% load static %}
+    {% include 'base.html' %}
+
+    <meta charset="utf-8">
+    <title>MEDINOVA - Hospital Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <style>
+    body{
+    background-image:url("{% static 'img/main.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    }
+
+
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+
+
+  .jumbotron {
+
+        margin-top:40px;
+
+
+      padding-bottom: 20%;
+      height:100px;
+    }
+    #jbt{
+    text-align: center;
+
+
+
+}
+div.jbt1{
+padding: 20px 100px 20px 100px;
+
+}
+
+
+    </style>
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+
+<div class='jbt1'>
+    <div class="jumbotron" id="jbt">
+
+
+        <div class="text-center">
+            <br>
+            <h1>All Doctor Details</h1>
+            <div class="me-2">
+                <br>
+
+
+                <table class="table table-striped" style="margin: auto; max-width: 85%;">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Master ID</th>
+                        <th scope="col">Doctor Name</th>
+                        <th scope="col">Speciality Name</th>
+                        <th scope="col">email</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for i in data %}
+
+                    <tr>
+                        <th scope="row"> {{ forloop.counter }}</th>
+                        <!--                        <td> {{ i.is_superuser }}</td>-->
+                        <td> {{ i.id}}</td>
+                        <td> {{ i.username}}</td>
+                        <td> {{ i.first_name }}</td>
+                        <td> {{ i.email }}</td>
+                        <!--
+                                           <td> {{ i.gender }}</td>-->
+                        {% if request.user.username == "admin1" %}
+                        <td class="text-center">
+                            <a class="btn btn-warning btn-lg" href="{% url 'edit_user' i.id %}">Edit</a>
+                            <a class="btn btn-danger btn-lg" href="{% url 'delete_doctor' i.id %}">Delete</a>
+
+                        </td>
+                        {% endif%}
+                        {% if request.user.type_user == "Patient" %}
+                        <td class="text-center">
+                            <a class="btn btn-warning btn-lg" href="{% url 'appointment' i.id %}">Appointment</a>
+
+                        </td>
+                        {% endif %}
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+
+    </div>
+</div>
+
+
+</body>
+</html>

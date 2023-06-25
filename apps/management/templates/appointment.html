@@ -1,0 +1,156 @@
+<!
+<html>
+
+<head>
+
+
+    {% load static %}
+    {% include 'base.html' %}
+
+    <meta charset="utf-8">
+    <title>MEDINOVA - Hospital Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <style>
+    body{
+    background-image:url("{% static 'img/main.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    }
+
+
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+
+
+  .jumbotron {
+
+        margin-top:40px;
+
+
+      padding-bottom: 20%;
+      height:100px;
+    }
+    #jbt{
+    text-align: center;
+
+
+
+}
+div.jbt1{
+padding: 20px 100px 20px 100px;
+
+}
+
+
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+
+<div class='jbt1'>
+    <div class="jumbotron" id="jbt">
+
+        <h1 id="a">Book Appointement </h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="name">Enter Full Name</label>
+                <input type="text" name="a_enter_full_name">
+
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Mobile</label>
+                <input type="text" name="a_mobile">
+
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Age </label>
+                <input type="text" name="a_age">
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Gender </label>
+                <input type="text" name="a_gender">
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Disease </label>
+                <input type="text" name="a_disease">
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Doctor ID </label>
+                <input type="text" name="d_id" value="{{data.id}}" readonly/>
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Doctor name </label>
+                <input type="text" name="username" value="{{data.username}}" readonly/>
+            </div>
+
+            <div class="form-outline mb-4">
+
+                <label class="form-label" for="password" >Speciality </label>
+                <input type="text" name="speciality" value="{{data.first_name}}" readonly/>
+            </div>
+
+              <div class="form-outline mb-4">
+
+                <label class="form-label" for="password">Patient ID </label>
+                <input type="text" name="p_id" value="{{request.user.id}}" readonly/>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                    Submit
+                </button>
+            </div>
+
+
+
+            <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                                                                                    class="fw-bold text-body"><u>Login
+                here</u></a></p>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

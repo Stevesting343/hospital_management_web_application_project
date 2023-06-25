@@ -1,0 +1,131 @@
+<!<html>
+
+<head>
+
+
+    {% load static %}
+    {% include 'base.html' %}
+
+    <meta charset="utf-8">
+    <title>MEDINOVA - Hospital Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <style>
+    body{
+    background-image:url("{% static 'img/main.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    }
+
+
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+
+
+  .jumbotron {
+
+        margin-top:40px;
+
+
+      padding-bottom: 20%;
+      height:100px;
+    }
+    #jbt{
+    text-align: center;
+
+
+
+}
+div.jbt1{
+padding: 20px 100px 20px 100px;
+
+}
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+
+    <div class='jbt1'>
+        <div class="jumbotron" id="jbt">
+
+            <h1 id="a">Enter Doctor Details</h1>
+
+                            <form action="{% url 'edit_user_d' data.id %}" method="post">
+                                {% csrf_token %}
+
+                                <div class="form-outline mb-4">
+
+                                    <label class="form-label" for="name">Your Name</label>
+                                    <input type="text" value="{{data.username}}" name="username">
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+
+                                    <label class="form-label" for="password">email</label>
+                                    <input type="email" value="{{data.email}}"  name="email">
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+
+                                    <label class="form-label" for="password">Speciality </label>
+                                     <input type="text" value="{{data.first_name}}"  name="firstname">
+                                </div>
+
+<!--                                    <div class="col">&ndash;&gt;-->
+<!--                        <div class="form-outline">-->
+
+<!--                            <select class="custom-select" name="d_category" required>-->
+<!--                                <option>check below</option>-->
+<!--                                <option name="d_category">Dentist</option>-->
+<!--                                <option name="d_category">Cardiologists</option>-->
+<!--                                <option name="d_category">Critical Care Medicine Specialists</option>-->
+<!--                                <option name="d_category">Anesthesiologists</option>-->
+<!--                                <option name="d_category">Endocrinologists</option>-->
+<!--                            </select>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                        Register
+                                    </button>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                                                                                                        class="fw-bold text-body"><u>Login
+                                    here</u></a></p>
+
+                            </form>
+        </div>
+    </div>
+</body>
+</html>
