@@ -20,18 +20,6 @@ def pharmacy(request):
 
 
 # Doctor section
-def store_doctor(request):
-    d = Doctor()
-    d.name = request.POST.get('d_name')
-    d.category = request.POST.get('d_category')
-    d.email = request.POST.get('d_email')
-    # d.age = request.POST.get('d_age')
-    d.gender = request.POST.get('d_gender')
-    d.save()
-    # print(d.name, d.email)
-
-    # return render(request, 'add_doctor.html')
-    return redirect('index')
 
 
 # def add_doctor(request):
@@ -46,16 +34,6 @@ def display_doctor(request):
 # ----------------------
 
 # Patient section
-def store_patient(request):
-    p = Patient()
-    p.name = request.POST.get('p_name')
-    p.email = request.POST.get('p_email')
-    p.age = request.POST.get('p_age')
-    p.gender = request.POST.get('p_gender')
-    p.mobile_no = request.POST.get('p_mobile')
-    p.save()
-
-    return redirect('index')
 
 
 # def add_patient(request):
@@ -136,7 +114,7 @@ def edit_user_d(request, pk):  # edit button not working because we add
         email = request.POST.get('email')
         firstname = request.POST.get('firstname')
         # override
-        user = User.objects.get(id=pk)
+        user = User.objects.get(id=pk)  # find the perticular
         user.username = username
         user.email = email
         user.first_name = firstname             # it is a speciality in database assign first_name
@@ -262,8 +240,6 @@ def patient_history(request):
         show = Accepted_Data.objects.filter(enter_full_name__contains=val)
         return render(request, 'dis_patient_histroy.html', {'data': show})
     return render(request, 'dis_patient_histroy.html', {'data': d})
-
-
 
 
 

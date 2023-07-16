@@ -7,10 +7,10 @@ urlpatterns = [
     path('pharmacy/', views.pharmacy, name='pharmacy'),
 
     # path('add_doctor/', views.add_doctor, name='add_doctor'),
-    path('store_doctor/', views.store_doctor, name='store_doctor'),
+
     path('display_doctor', views.display_doctor, name='display_doctor'),
 
-    path('store_patient/', views.store_patient, name='store_patient'),
+
     # path('add_patient/', views.add_patient, name='add_patient'),
     path('display_patient/', views.display_patient, name='display_patient'),
 
