@@ -81,8 +81,8 @@ def login_view(request):
     return render(request, 'login.html', {'msg': msg})
 
 
-# RameshSharma@2001
-# gaurav cha code working
+
+
 
 # if request.method == 'POST':
 #     username = request.POST.get('username')
