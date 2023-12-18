@@ -4,6 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     type_user = models.CharField(max_length=20)
+    speciality = models.CharField(max_length=20)
 
 
 class Doctor(models.Model):
@@ -24,7 +25,7 @@ class Patient(models.Model):
 
 class Appointment(models.Model):
     enter_full_name = models.CharField(max_length=100)
-    mobile_no = models.CharField()
+    mobile_no = models.CharField(max_length=100)
     age = models.IntegerField()
     gender = models.CharField(max_length=100)
     disease = models.CharField(max_length=100)
@@ -36,7 +37,7 @@ class Appointment(models.Model):
 
 class Accepted_Data(models.Model):
     enter_full_name = models.CharField(max_length=100)
-    mobile_no = models.CharField()
+    mobile_no = models.CharField(max_length=100)
     age = models.IntegerField()
     gender = models.CharField(max_length=100)
     disease = models.CharField(max_length=100)

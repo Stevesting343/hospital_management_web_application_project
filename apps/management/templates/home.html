@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bg-image {
+  /* The image used */
+  background-image:url("{% static 'img/main.jpg' %}");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+        button{
+            padding: 10px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .signup{
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+
+
+        .signup:hover{
+            background-color: #1d4ed8;
+        }
+
+        .login{
+            border: 1px solid #2563eb;
+            color: #2563eb;
+            background: none;
+        }
+
+        .login:hover{
+            background-color: #f0f9ff;
+        }
+
+        a{
+        text-decoration :none;
+        }
+         .doctor{
+            color:white;
+        }
+         body{
+    background-image:url("{% static 'img/main.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    }
+    </style>
+</head>
+<body>
+<div class="bg-image"></div>
+<div class="container">
+    <button class="signup">
+        <a class="doctor" href="{% url 'register_d' %}">Doctor</a>
+    </button>
+    <button class="login">
+        <a href="{% url 'patient_register' %}">Patient</a>
+    </button>
+</div>
+    
+</body>
+</html>

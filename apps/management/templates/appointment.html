@@ -44,9 +44,9 @@ top: 13px;
 
         margin-top:40px;
 
-
+      background:transparent;
       padding-bottom: 20%;
-      height:100px;
+      height:80%;
     }
     #jbt{
     text-align: center;
@@ -55,11 +55,18 @@ top: 13px;
 
 }
 div.jbt1{
-padding: 20px 100px 20px 100px;
+padding: 0px 100px 20px 100px;
 
 }
+label{
+    color : red;
+    font-family : Bold
+    }
+input{
+    text-align:left;
 
 
+     }
 
 
 
@@ -75,66 +82,67 @@ padding: 20px 100px 20px 100px;
 <div class='jbt1'>
     <div class="jumbotron" id="jbt">
 
-        <h1 id="a">Book Appointement </h1>
+        <h1 id="a">Book Appointement </h1><br><br>
 
         <form action="" method="post">
             {% csrf_token %}
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="name">Enter Full Name</label>
+                <label class="form-label" for="name">Enter Full Name   </label>
                 <input type="text" name="a_enter_full_name">
 
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Mobile</label>
+                <label class="form-label" for="password">Mobile   </label>
                 <input type="text" name="a_mobile">
 
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Age </label>
+                <label class="form-label" for="password">Age   </label>
                 <input type="text" name="a_age">
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Gender </label>
+                <label class="form-label" for="password">Gender   </label>
                 <input type="text" name="a_gender">
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Disease </label>
+                <label class="form-label" for="password">Disease   </label>
                 <input type="text" name="a_disease">
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Doctor ID </label>
+                <label class="form-label" for="password">Doctor ID   </label>
                 <input type="text" name="d_id" value="{{data.id}}" readonly/>
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Doctor name </label>
+                <label class="form-label" for="password">Doctor Name   </label>
                 <input type="text" name="username" value="{{data.username}}" readonly/>
             </div>
 
             <div class="form-outline mb-4">
 
-                <label class="form-label" for="password" >Speciality </label>
+                <label class="form-label" for="password" >Speciality   </label>
                 <input type="text" name="speciality" value="{{data.first_name}}" readonly/>
             </div>
 
               <div class="form-outline mb-4">
 
-                <label class="form-label" for="password">Patient ID </label>
+                <label class="form-label" for="password">Patient ID</label>
                 <input type="text" name="p_id" value="{{request.user.id}}" readonly/>
             </div>
+            <br><br>
 
             <div class="d-flex justify-content-center">
                 <button type="submit"

@@ -10,6 +10,9 @@ from datetime import date
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'home.html')
+
 
 def home(request):
     return render(request, 'index.html')
@@ -54,57 +57,74 @@ def login_view(request):
         form = LoginForm(request.POST or None)
         msg = None
         if request.method == 'POST':
-            if form.is_valid():
-                username = form.cleaned_data.get('username')
-                password = form.cleaned_data.get('password')
-                user = authenticate(username=username, password=password)
-                # print('User name :', user.username)
-                # return redirect('index')
-                # print('department :', user.department)
-                if user is not None and user.type_user == "Patient":
-                    login(request, user)
-                    return redirect('index')
-                elif user is not None and user.type_user == "Doctor":
-                    login(request, user)
-                    return redirect('index')
-                elif user is not None and user.username == "admin1":
-                    login(request, user)
-                    return redirect('display_patient')
-                else:
-                    msg = 'invalid credentials'
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            # print('User name :', user.username)
+            # return redirect('index')
+            # print('department :', user.department)
+            if user is not None and user.type_user == "Patient":
+                login(request, user)
+                return redirect('index')
+            elif user is not None and user.type_user == "Doctor":
+                login(request, user)
+                return redirect('index')
+            elif user is not None and user.username == "admin1":
+                login(request, user)
+                return redirect('display_patient')
             else:
-                msg = 'error validating form'
-
-    return render(request, 'login.html', {'form': form, 'msg': msg})
-
-
-  # RameshSharma@2001
-    # gaurav cha code working
-
-    # if request.method == 'POST':
-    #     username = request.POST.get('username')
-    #     password = request.POST.get('password')
-    #     user = authenticate(request, username=username, password=password)
-    #     if user is not None:
-    #         login(request, user)
-    #         return redirect('index')
-    #
-    # return render(request, 'login.html')
+                msg = 'invalid credentials'
+        else:
+            msg = 'error validating form'
 
 
-def register(request):
+    return render(request, 'login.html', {'msg': msg})
+
+
+# RameshSharma@2001
+# gaurav cha code working
+
+# if request.method == 'POST':
+#     username = request.POST.get('username')
+#     password = request.POST.get('password')
+#     user = authenticate(request, username=username, password=password)
+#     if user is not None:
+#         login(request, user)
+#         return redirect('index')
+#
+# return render(request, 'login.html')
+
+def patient_register(request):
+    print("i---------")
     msg = None
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            msg = 'user created'
+        name_p = request.POST.get('name')
+        pass1 = request.POST.get('pwd1')
+        pass2 = request.POST.get('pwd2')
+        email_p = request.POST.get('email')
+        if pass1 == pass2:
+            user = User.objects.create_user(username=name_p, password=pass1, email=email_p, type_user='Patient')
+            user.save()
             return redirect('login_view')
-        else:
-            msg = 'form is not valid'
-    else:
-        form = SignUpForm()
-    return render(request, 'register.html', {'form': form, 'msg': msg})
+    return render(request, 'patient_register.html')
+
+
+def register_d(request):  # this is for Doctor
+    msg = None
+    if request.method == 'POST':
+        name_d = request.POST.get('name')
+        pass1_d = request.POST.get('pwds1')
+        pass2_d = request.POST.get('pwds2')
+        email_d = request.POST.get('email')
+        speciality = request.POST.get('speciality')
+        if pass1_d == pass2_d:
+            print("hii---------")
+            user = User.objects.create_user(username=name_d, password=pass1_d, email=email_d, type_user='Doctor')
+            user.save()
+            print(name_d, pass1_d, pass2_d)
+            return redirect('login_view')
+
+    return render(request, 'register.html')
 
 
 def edit_user_d(request, pk):  # edit button not working because we add
@@ -117,7 +137,7 @@ def edit_user_d(request, pk):  # edit button not working because we add
         user = User.objects.get(id=pk)  # find the perticular
         user.username = username
         user.email = email
-        user.first_name = firstname             # it is a speciality in database assign first_name
+        user.first_name = firstname  # it is a speciality in database assign first_name
         user.save()
 
     show = User.objects.filter(type_user="Doctor")
@@ -136,7 +156,7 @@ def edit_user_p(request, pk):
         email = request.POST.get('email')
         firstname = request.POST.get('firstname')
         # override
-        user = User.objects.get(id=pk)
+        user = User.objects.get(id=pk)  # find single user from database
         user.username = username
         user.email = email
         user.first_name = firstname
@@ -221,7 +241,7 @@ def save_accepted_appointment(request, name, mobile_no, age, gender, disease, d_
     d.delete()
     data = Accepted_Data.objects.all()
 
-    return render(request, 'accept.html', {'data': data})   # accept page is for appointement accepted data
+    return render(request, 'accept.html', {'data': data})  # accept page is for appointement accepted data
 
 
 def app_dis_to_pa(request, pk):
@@ -240,354 +260,3 @@ def patient_history(request):
         show = Accepted_Data.objects.filter(enter_full_name__contains=val)
         return render(request, 'dis_patient_histroy.html', {'data': show})
     return render(request, 'dis_patient_histroy.html', {'data': d})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
