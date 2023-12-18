@@ -29,6 +29,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 
 
 
+
     </style>
     <!-- Font Awesome -->
     <link
@@ -62,25 +63,30 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 
                                 <div class="form-outline mb-4">
 
-                                    <label class="form-label" for="name">Your Name &nbsp;</label>
+                                    <label class="form-label">Your Name &nbsp;</label>
                                     <input type="text" name="name">
                                 </div>
 
                                 <div class="form-outline mb-4">
 
                                     <label class="form-label" for="password">Password &nbsp;</label>
-                                    <input type="password" name="pwd1">
+                                    <input type="password" id="password" name="pwd1">
                                 </div>
 
                                 <div class="form-outline mb-4">
 
-                                    <label class="form-label" for="password"> Re-Password &nbsp;</label>
-                                    <input type="password" name="pwd2">
+                                    <label class="form-label"  for="password"> Re-Password &nbsp;</label>
+<!--                                    <input type="password" name="pwd2">-->
+                                    <!-- Password field -->
+                                   <input type="password" id="rePassword" name="pwd2">
+
+                                    <!-- An element to toggle between password visibility -->
+
                                 </div>
 
                                 <div class="form-outline mb-4">
 
-                                    <label class="form-label" for="name">Your Email &nbsp;</label>
+                                    <label class="form-label">Your Email &nbsp;</label>
                                     <input type="email" name="email">
                                 </div>
 
@@ -93,7 +99,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                                 <!--                                    <label class="label" for="password">Type of User  &nbsp; </label>-->
                                 <!--                                    <input type="text" name="type_user">-->
                                 <!--                                </div>-->
-
+                                 <input type="checkbox" onclick="showBothPasswords()">  Show Password
                                 <div class="d-flex justify-content-center">
                                     <button type="submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
@@ -111,5 +117,27 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         </div>
     </div>
 </section>
+<script>
+
+function showBothPasswords() {
+
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+
+  var y = document.getElementById("rePassword");
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+
+}
+
+
+</script>
 </body>
 </html>

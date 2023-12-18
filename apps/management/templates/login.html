@@ -24,6 +24,8 @@ input{
 
 
 
+
+
     </style>
     <!-- Font Awesome -->
     <link
@@ -59,12 +61,23 @@ input{
                                 </div>
 
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" name="password" placeholder="Password">
+
+                                    <input type="password" id="myInput1" name="password" placeholder="password">
+
+
 
                                 </div>
+                                <div>
+                                <input type="checkbox" onclick="myFunction1()">  Show Password
+                                    </div>
+                                <br>
                                 <span class="text-error">{{ form.errors }}</span>
 
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button><br>
+                                <!-- An element to toggle between password visibility -->
+
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <br>
 
 
                             </form>
@@ -83,7 +96,16 @@ input{
         </div>
     </div>
 </section>
-
+<script>
+    function myFunction1() {
+  var x = document.getElementById("myInput1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </body>
 </html>
 
